@@ -33,14 +33,7 @@
                 @include('layouts.navigation')
                 <!-- Page Heading -->
                 <section id="main-content">
-                    <header>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                {{ $header }}
-                            </div>
-                        </div>
-                    </header>
+                    
 
                     <!-- Page Content -->
                     <main>

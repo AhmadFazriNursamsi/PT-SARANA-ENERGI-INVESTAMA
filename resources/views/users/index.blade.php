@@ -7,8 +7,7 @@ $haveaccessdelete = Helpers::checkaccess('users', 'delete');
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight hetf2"><i class="fa fa-users"></i>
-            {{ __('Users') }} <?php if($haveaccessadd): ?> <a href="{{URL::to('/users/create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add User</a> <?php endif; ?>
-        </h2>
+            {{ __('Users') }}</h2>
     </x-slot>
 
     <div class="py-12">

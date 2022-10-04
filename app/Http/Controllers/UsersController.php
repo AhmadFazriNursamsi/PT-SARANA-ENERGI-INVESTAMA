@@ -100,19 +100,7 @@ class UsersController extends AController
             return redirect("/users/edit/$id");
         else {
             Session::flash('message', "Upps !!! Something Wrong ... please try again !!!");
-            return redirect("/users/create"){
-                //     $penawaran = new Penawaran;
-                //     $idd = Auth::user()->id;
-                //     $penawaran->user_id = $idd;
-                //     $penawaran->title = $request->item;
-                //     $penawaran->customer_id=$idd;	
-                //     $penawaran->created_at = date('Y-m-d H:i:s');
-                //     $randomString = Str::random(20);
-        
-                //     $penawaran->no_offer=$randomString;
-                //     $penawaran->save();
-                    
-                // });
+            return redirect("/users/create");
         }
     }
 

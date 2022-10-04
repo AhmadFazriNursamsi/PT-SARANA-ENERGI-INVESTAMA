@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 03, 2022 at 10:36 PM
--- Server version: 8.0.30-0ubuntu0.22.04.1
--- PHP Version: 8.1.2
+-- Waktu pembuatan: 04 Okt 2022 pada 14.41
+-- Versi server: 8.0.30-0ubuntu0.22.04.1
+-- Versi PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,27 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `customer_id` int DEFAULT NULL,
-  `nama` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `telepon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`customer_id`, `nama`, `email`, `telepon`) VALUES
-(1, 'Ahmad', 'ahmad@gmail.com', '0895359470789');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `division`
+-- Struktur dari tabel `division`
 --
 
 CREATE TABLE `division` (
@@ -57,7 +37,7 @@ CREATE TABLE `division` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `division`
+-- Dumping data untuk tabel `division`
 --
 
 INSERT INTO `division` (`id_division`, `division_name`, `created_at`, `updated_at`, `active`, `flag_delete`) VALUES
@@ -68,7 +48,7 @@ INSERT INTO `division` (`id_division`, `division_name`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Struktur dari tabel `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -84,27 +64,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item_penawaran`
---
-
-CREATE TABLE `item_penawaran` (
-  `item_id` int DEFAULT NULL,
-  `nama_item` varchar(255) NOT NULL,
-  `quantity` varchar(255) DEFAULT NULL,
-  `harga` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `item_penawaran`
---
-
-INSERT INTO `item_penawaran` (`item_id`, `nama_item`, `quantity`, `harga`) VALUES
-(1, 'Pepsodent', '899', '3000');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `list_access`
+-- Struktur dari tabel `list_access`
 --
 
 CREATE TABLE `list_access` (
@@ -115,7 +75,7 @@ CREATE TABLE `list_access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `list_access`
+-- Dumping data untuk tabel `list_access`
 --
 
 INSERT INTO `list_access` (`id_access`, `name_access`, `name_url`, `flag_delete`) VALUES
@@ -132,7 +92,7 @@ INSERT INTO `list_access` (`id_access`, `name_access`, `name_url`, `flag_delete`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -142,7 +102,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -154,21 +114,39 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penawaran`
+-- Struktur dari tabel `now`
 --
 
-CREATE TABLE `penawaran` (
-  `user_id` int DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `customer_id` int NOT NULL,
-  `created_at` timestamp NOT NULL,
-  `no_offer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+CREATE TABLE `now` (
+  `id` int NOT NULL,
+  `judul` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL,
+  `duration` varchar(255) DEFAULT NULL,
+  `img` varchar(256) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Struktur dari tabel `popular`
+--
+
+CREATE TABLE `popular` (
+  `id` int NOT NULL,
+  `judul` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL,
+  `duration` varchar(255) DEFAULT NULL,
+  `img` varchar(256) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `role`
 --
 
 CREATE TABLE `role` (
@@ -181,7 +159,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `role`
+-- Dumping data untuk tabel `role`
 --
 
 INSERT INTO `role` (`id_role`, `role_name`, `flag_delete`, `active`, `created_at`, `updated_at`) VALUES
@@ -193,7 +171,40 @@ INSERT INTO `role` (`id_role`, `role_name`, `flag_delete`, `active`, `created_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `top`
+--
+
+CREATE TABLE `top` (
+  `id` int NOT NULL,
+  `judul` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL,
+  `duration` varchar(255) DEFAULT NULL,
+  `descrip` text,
+  `img` varchar(256) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `up`
+--
+
+CREATE TABLE `up` (
+  `id` int NOT NULL,
+  `judul` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL,
+  `duration` varchar(255) DEFAULT NULL,
+  `img` varchar(256) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -203,7 +214,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`user-id`, `nama`, `nik`) VALUES
@@ -212,7 +223,7 @@ INSERT INTO `user` (`user-id`, `nama`, `nik`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -234,7 +245,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `id_division`, `join_date`, `mobile`, `active`, `id_role`, `flag_delete`) VALUES
@@ -250,7 +261,7 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `pa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_access`
+-- Struktur dari tabel `user_access`
 --
 
 CREATE TABLE `user_access` (
@@ -262,7 +273,7 @@ CREATE TABLE `user_access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_access`
+-- Dumping data untuk tabel `user_access`
 --
 
 INSERT INTO `user_access` (`id_access`, `id_users`, `name_access`, `key_access`, `val_access`) VALUES
@@ -488,47 +499,59 @@ INSERT INTO `user_access` (`id_access`, `id_users`, `name_access`, `key_access`,
 --
 
 --
--- Indexes for table `list_access`
+-- Indeks untuk tabel `list_access`
 --
 ALTER TABLE `list_access`
   ADD PRIMARY KEY (`id_access`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `top`
+--
+ALTER TABLE `top`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user-id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_access`
+-- Indeks untuk tabel `user_access`
 --
 ALTER TABLE `user_access`
   ADD PRIMARY KEY (`id_access`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `list_access`
+-- AUTO_INCREMENT untuk tabel `list_access`
 --
 ALTER TABLE `list_access`
   MODIFY `id_access` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `top`
+--
+ALTER TABLE `top`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `user_access`
+-- AUTO_INCREMENT untuk tabel `user_access`
 --
 ALTER TABLE `user_access`
   MODIFY `id_access` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;

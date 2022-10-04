@@ -36,69 +36,36 @@ class HelpersController extends Controller
             "list_child":[]
         }, { 
             "dropdown":"0",
-            "url":"customer",
-            "name":"Customer",
+            "url":"now",
+            "name":"Now Playing",
             "class":"",
             "icon":"clr-blue bi bi-person-bounding-box",
             "list_child":[]
         }, { 
             "dropdown":"0",
-            "url":"listaccess",
-            "name":"List Access",
+            "url":"popular",
+            "name":"Popular",
             "class":"",
             "icon":"clr-blue bi bi-person-bounding-box",
-            "list_child":[]
-        }]
-    }, { 
-        "dropdown":"1",
-        "url":"",
-        "name":"Transaction",
-        "class":"",
-        "icon":"clr-green fa fa-cogs",
-        "list_child":[{
-            "dropdown":"0",
-            "url":"orders",
-            "name":"Orders",
-            "class":"",
-            "icon":"clr-blue fa fa-tasks",
             "list_child":[]
         },{ 
             "dropdown":"0",
-            "url":"penawaran",
-            "name":"penawaran",
+            "url":"top",
+            "name":"Top Rated",
             "class":"",
             "icon":"clr-blue bi bi-person-bounding-box",
             "list_child":[]
-        },  { 
+        },
+        { 
             "dropdown":"0",
-            "url":"invoice",
-            "name":"Invoice",
+            "url":"up",
+            "name":"Up Coming",
             "class":"",
-            "icon":"clr-blue fa fa-tasks",
+            "icon":"clr-blue bi bi-person-bounding-box",
             "list_child":[]
-        }]
-    }, { 
-        "dropdown":"1",
-        "url":"",
-        "name":"Utility",
-        "class":"",
-        "icon":"clr-coklat fa fa-wrench",
-        "list_child":[{
-            "dropdown":"0",
-            "url":"config",
-            "name":"Config",
-            "class":"",
-            "icon":"clr-blue fa fa-tasks",
-            "list_child":[]
-        }, { 
-            "dropdown":"0",
-            "url":"options",
-            "name":"Options",
-            "class":"",
-            "icon":"clr-blue fa fa-tasks",
-            "list_child":[]
-        }]
-    }]
+        }
+        ]
+    }   ]
 }';
     	return json_decode($listmenu);
     }
@@ -155,19 +122,48 @@ class HelpersController extends Controller
     //   return response()->json(['errors'=>$validator->errors()]);
     // }
 
-    public function uploadImage($request, $imagename='dft'){
+    public static function uploadImage($request, $imagename='nameprod12222'){
 
         if($request->file() != null) {
-            if($request->file('image')) {
-                foreach($request->file() as $key => $img){
-                    $extention = $img->getClientOriginalExtension();
-                    $imageName = $imagename.'.'.$extention; // will be save name $imagename.$extention
-                    $img->move(public_path('images/uploads'), $imageName);
-                    $i++;
-                }
-                return true;
+            foreach($request->file() as $key => $img)
+            {
+                $extention = $img->getClientOriginalExtension(); // asli berhasil
+                $imageNameExtension = $imagename.'.'.$extention; // will be save name $imagename.$extention asli
+                $imgmove = $img->move(public_path('images/uploads'), $imageNameExtension); // asli berhasil
+                // dd($img->getRealPath());
+                $Thumbnails = 'Thumbnail-'.$imagename.'.'.$extention;
+                // $thumbnails = Image::make($imgmove->getRealPath())->resize(50,50)->save('public/images/uploads'. $imagename.'-thumbnail.'.$extention); // asli berhasi;
+                // dd($Thumbnails);
+                // Image::make($imgmove->getRealPath())->resize(250,250)->save('images/uploads/'.$Thumbnails); // asli berhasi;
             }
+            return $imageNameExtension;
         }
         return false;
+    }
+    public static function generateKodekaryawan($namadepan = '', $namabelakang = 0)
+    {
+        // nama_products, total product berdasarkan kategori, brand products
+        if($namadepan != '')
+        { 
+            $hasil = self::DapetHurufDepan($namadepan);
+            // $total_count = Product::where('category_id', $category_id)->count()+1;
+            $untukstrtotime = strtotime(date('YmdHis'));
+            return $hasil.$namabelakang.$untukstrtotime;
+        } else {
+            return false;
+        } 
+    }
+
+    public static function DapetHurufDepan($a)
+    {
+        $words = explode(" ", $a);
+        $acronym = "";
+
+        foreach ($words as $w) 
+        {
+            $acronym .= $w[0];
+        }
+
+        return $acronym;
     }
 }
